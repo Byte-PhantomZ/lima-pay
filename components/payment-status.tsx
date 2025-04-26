@@ -22,6 +22,7 @@ export function PaymentStatus({ transaction: initialTransaction }: PaymentStatus
   const [timeRemaining, setTimeRemaining] = useState<number>(0)
   const [progressPercent, setProgressPercent] = useState<number>(100)
   const [isMockInvoice, setIsMockInvoice] = useState<boolean>(transaction.invoice_id?.startsWith("mock-") || false)
+  const [mockPaymentSimulated, setMockPaymentSimulated] = useState(false)
 
   const supabase = getBrowserClient()
 
@@ -87,6 +88,10 @@ export function PaymentStatus({ transaction: initialTransaction }: PaymentStatus
 
   // Function to check payment status
   const checkPaymentStatus = async () => {
+    if (mockPaymentSimulated) {
+      return true // Don't check again if mock payment was already simulated
+    }
+
     try {
       setIsChecking(true)
       setError(null)
@@ -115,27 +120,27 @@ export function PaymentStatus({ transaction: initialTransaction }: PaymentStatus
     }
   }
 
-  // For mock invoices, simulate payment after a random time (for demo purposes)
+  // For mock invoices, simulate payment after a random time
   useEffect(() => {
-    if (isMockInvoice && transaction.status === "invoice_generated") {
-      // Simulate payment after 5-15 seconds for demo purposes
-      const simulatePaymentTimer = setTimeout(
-        () => {
-          // 50% chance of payment success in demo mode
-          if (Math.random() < 0.5) {
-            checkPaymentStatus()
-          }
-        },
-        5000 + Math.random() * 10000,
-      )
+    if (isMockInvoice && transaction.status === "invoice_generated" && !mockPaymentSimulated) {
+      // Random time between 5-15 seconds for demo
+      const simulatePaymentTimer = setTimeout(() => {
+        setMockPaymentSimulated(true)
+        // 80% chance of success in demo mode
+        if (Math.random() < 0.8) {
+          setTransaction(prev => ({ ...prev, status: "paid" }))
+          // Trigger a status check to complete the flow
+          checkPaymentStatus()
+        }
+      }, 5000 + Math.random() * 10000)
 
       return () => clearTimeout(simulatePaymentTimer)
     }
-  }, [isMockInvoice, transaction.status])
+  }, [isMockInvoice, transaction.status, mockPaymentSimulated])
 
-  // Set up real-time subscription
+  // Set up real-time subscription for non-mock transactions
   useEffect(() => {
-    if (!supabase) return
+    if (!supabase || isMockInvoice) return
 
     const channel = supabase
       .channel(`transaction-${transaction.id}`)
@@ -156,7 +161,7 @@ export function PaymentStatus({ transaction: initialTransaction }: PaymentStatus
     return () => {
       supabase?.removeChannel(channel)
     }
-  }, [transaction.id, supabase])
+  }, [transaction.id, supabase, isMockInvoice])
 
   // Set up polling as a fallback
   useEffect(() => {
@@ -186,28 +191,32 @@ export function PaymentStatus({ transaction: initialTransaction }: PaymentStatus
     switch (transaction.status) {
       case "invoice_generated":
         return {
-          title: "Waiting for Payment",
+          title: isMockInvoice ? "Demo Payment Waiting" : "Waiting for Payment",
           description: isMockInvoice
-            ? "This is a demo invoice. In a real environment, you would scan this with your Lightning wallet."
+            ? "This is a demo invoice. Payment will be simulated automatically."
             : "Please scan the QR code with your Lightning wallet",
           icon: <Clock className="h-6 w-6 text-yellow-500" />,
         }
       case "paid":
         return {
-          title: "Payment Received",
+          title: isMockInvoice ? "Demo Payment Received" : "Payment Received",
           description: "Processing your mobile money transfer",
           icon: <Loader2 className="h-6 w-6 text-blue-500 animate-spin" />,
         }
       case "sending_mobile_money":
         return {
-          title: "Sending Mobile Money",
-          description: "Your mobile money transfer is being processed",
+          title: isMockInvoice ? "Simulating Transfer" : "Sending Mobile Money",
+          description: isMockInvoice 
+            ? "Simulating your mobile money transfer"
+            : "Your mobile money transfer is being processed",
           icon: <Loader2 className="h-6 w-6 text-blue-500 animate-spin" />,
         }
       case "completed":
         return {
-          title: "Transfer Complete",
-          description: "Your mobile money transfer has been sent successfully",
+          title: isMockInvoice ? "Demo Transfer Complete" : "Transfer Complete",
+          description: isMockInvoice 
+            ? "Your simulated mobile money transfer is complete"
+            : "Your mobile money transfer has been sent successfully",
           icon: <CheckCircle className="h-6 w-6 text-green-500" />,
         }
       case "failed":
@@ -257,8 +266,12 @@ export function PaymentStatus({ transaction: initialTransaction }: PaymentStatus
             <AlertTitle className="text-yellow-600 dark:text-yellow-400">Demo Mode</AlertTitle>
             <AlertDescription className="text-yellow-600 dark:text-yellow-400">
               This is a demo invoice. In production, you would scan a real Lightning invoice.
-              <br />
-              For this demo, the payment may be automatically simulated after a few seconds.
+              {!mockPaymentSimulated && transaction.status === "invoice_generated" && (
+                <>
+                  <br />
+                  Payment will be automatically simulated in a few seconds...
+                </>
+              )}
             </AlertDescription>
           </Alert>
         )}
@@ -273,17 +286,36 @@ export function PaymentStatus({ transaction: initialTransaction }: PaymentStatus
             <>
               <div className="flex justify-center">
                 <div className="bg-white p-4 rounded-lg">
-                  <QRCodeSVG value={transaction.invoice_string} size={200} level="H" includeMargin />
+                  {transaction.invoice_string ? (
+                    <QRCodeSVG 
+                      value={transaction.invoice_string} 
+                      size={200} 
+                      level="H" 
+                      includeMargin 
+                      onError={(error) => {
+                        console.error("QR Code generation error:", error)
+                        setError("Failed to generate QR code")
+                      }}
+                    />
+                  ) : (
+                    <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-100 rounded">
+                      <p className="text-sm text-gray-500">No invoice data available</p>
+                    </div>
+                  )}
                 </div>
               </div>
 
               <div className="relative">
                 <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md overflow-hidden">
-                  <p className="text-xs text-gray-600 dark:text-gray-300 break-all">{transaction.invoice_string}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-300 break-all">
+                    {transaction.invoice_string || "No invoice string available"}
+                  </p>
                 </div>
-                <Button variant="outline" size="sm" className="absolute top-2 right-2" onClick={copyToClipboard}>
-                  {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                </Button>
+                {transaction.invoice_string && (
+                  <Button variant="outline" size="sm" className="absolute top-2 right-2" onClick={copyToClipboard}>
+                    {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  </Button>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -302,7 +334,7 @@ export function PaymentStatus({ transaction: initialTransaction }: PaymentStatus
         {transaction.status === "completed" && (
           <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-md">
             <p className="text-green-700 dark:text-green-300 text-center">
-              Mobile money has been sent to {transaction.recipient_phone}
+              {isMockInvoice ? "Demo payment completed" : "Mobile money has been sent to"} {transaction.recipient_phone}
               {transaction.mobile_money_reference && (
                 <span className="block mt-2 text-sm">Reference: {transaction.mobile_money_reference}</span>
               )}

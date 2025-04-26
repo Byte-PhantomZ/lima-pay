@@ -10,6 +10,8 @@ interface PaymentPageProps {
 }
 
 async function getTransaction(id: string): Promise<Transaction | null> {
+  if (!id) return null
+  
   const supabase = getServerClient()
 
   const { data, error } = await supabase
@@ -33,10 +35,15 @@ async function getTransaction(id: string): Promise<Transaction | null> {
 }
 
 export default async function PaymentPage({ params }: PaymentPageProps) {
+  // Check params.id first
+  if (!params?.id) {
+    return notFound()
+  }
+
   const transaction = await getTransaction(params.id)
 
   if (!transaction) {
-    notFound()
+    return notFound()
   }
 
   return (

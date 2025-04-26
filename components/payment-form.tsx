@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 
 const formSchema = z.object({
   phone: z.string().min(8, {
@@ -26,6 +27,7 @@ interface PaymentFormProps {
 
 export function PaymentForm({ networks }: PaymentFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
   // Get the MOMO network ID (should be the only one)
@@ -41,6 +43,7 @@ export function PaymentForm({ networks }: PaymentFormProps) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
+    setError(null)
 
     try {
       const response = await fetch("/api/create-invoice", {
@@ -55,14 +58,21 @@ export function PaymentForm({ networks }: PaymentFormProps) {
         }),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error("Failed to create invoice")
+        throw new Error(data.error || "Failed to create invoice")
       }
 
-      const data = await response.json()
+      if (!data.transactionId) {
+        throw new Error("No transaction ID received")
+      }
+
+      // Redirect to payment page with transaction ID
       router.push(`/payment/${data.transactionId}`)
     } catch (error) {
       console.error("Error creating invoice:", error)
+      setError(error instanceof Error ? error.message : "Failed to create invoice")
     } finally {
       setIsSubmitting(false)
     }
@@ -77,6 +87,12 @@ export function PaymentForm({ networks }: PaymentFormProps) {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            {error && (
+              <Alert variant="destructive">
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
             <FormField
               control={form.control}
               name="phone"

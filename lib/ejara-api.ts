@@ -179,17 +179,34 @@ function generateMockInvoice(amountXAF: number): {
 } {
   console.log(`Generating mock invoice for ${amountXAF} XAF`)
 
-  // Mock conversion rate: 1 XAF = 0.00000001 BTC (example only)
-  const amountBtc = amountXAF * 0.00000001
+  // More realistic BTC conversion rate (approximate as of 2025)
+  // 1 XAF ≈ 0.0000000021 BTC (this would need regular updates in production)
+  const amountBtc = amountXAF * 0.0000000021
 
-  // Generate a random invoice ID
-  const invoiceId = `mock-${Date.now()}`
+  // Generate a deterministic but unique invoice ID based on amount and timestamp
+  const timestamp = Date.now()
+  const invoiceId = `mock-${timestamp}-${Math.floor(amountXAF)}`
 
-  // Generate a mock Lightning invoice string
-  const invoiceString = `lnbc${amountBtc}n1p38q3g0sp5zvfvx9j4jgf9y9d7nw4c29ztj8rn98rqw6mzl9xcuj3lnxcgf0kpp5zqf9qy9h8vmmfvdjjqen0wgs8xct5daeks6tnyypskuepqv3jhqcqzpgxqyz5vqsp5usyc4lk9chsfp53kvcnvq456ganh60d89zpga7jm9hnvkws4ms9q9qyyssqd4jceq0dq3fqm75n2399yx6tet7q2v2x0qd9cxhvlx9q4j4k99y8tgqxnl0qzj5a8h7jctqthf0avz3fnw9a5r7d6xk8wvgq6q7xgpfj9z8k`
+  // Generate a more realistic looking Lightning invoice string
+  // Format: lnbc[amount][timestring][payment_hash][payment_secret][signature]
+  const mockAmount = Math.floor(amountBtc * 100000000) // Convert to satoshis
+  const timeString = Math.floor(timestamp / 1000).toString(16)
+  const mockPaymentHash = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('')
+  const mockSignature = Array.from({ length: 128 }, () => Math.floor(Math.random() * 16).toString(16)).join('')
+  
+  const invoiceString = `lnbc${mockAmount}${timeString}${mockPaymentHash}${mockSignature}`
 
-  // Set expiry to 10 minutes from now
-  const expiresAt = new Date(Date.now() + 10 * 60 * 1000)
+  // Set expiry to a random time between 8 and 12 minutes from now for more realistic behavior
+  const expiryMinutes = 8 + Math.floor(Math.random() * 5)
+  const expiresAt = new Date(Date.now() + expiryMinutes * 60 * 1000)
+
+  // Store mock payment status for later checking
+  mockInvoiceStatuses.set(invoiceId, {
+    created: timestamp,
+    expiresAt: expiresAt.getTime(),
+    paid: false,
+    amountXAF,
+  })
 
   return {
     invoiceId,
@@ -200,6 +217,14 @@ function generateMockInvoice(amountXAF: number): {
   }
 }
 
+// Track mock invoice payment statuses
+const mockInvoiceStatuses = new Map<string, {
+  created: number
+  expiresAt: number
+  paid: boolean
+  amountXAF: number
+}>()
+
 /**
  * Check if a Lightning invoice has been paid
  */
@@ -208,14 +233,41 @@ export async function checkInvoiceStatus(invoiceId: string): Promise<{
   status: string
   transactionId?: string
 }> {
-  // If it's a mock invoice, simulate payment status
-  if (invoiceId.startsWith("mock-")) {
-    // 20% chance of being paid for demo purposes
-    const isPaid = Math.random() < 0.2
+  // Handle mock invoices with more realistic simulation
+  if (invoiceId.startsWith('mock-')) {
+    const mockStatus = mockInvoiceStatuses.get(invoiceId)
+    
+    if (!mockStatus) {
+      return {
+        paid: false,
+        status: 'INVALID',
+      }
+    }
+
+    // Check if invoice has expired
+    if (Date.now() > mockStatus.expiresAt) {
+      return {
+        paid: false,
+        status: 'EXPIRED',
+      }
+    }
+
+    // If not already paid, simulate payment with increasing probability over time
+    if (!mockStatus.paid) {
+      const ageInSeconds = (Date.now() - mockStatus.created) / 1000
+      const baseChance = Math.min(ageInSeconds / 60, 1) * 0.4 // Max 40% chance after 1 minute
+      const randomFactor = Math.random() * 0.2 // Additional random factor
+      
+      if (Math.random() < (baseChance + randomFactor)) {
+        mockStatus.paid = true
+        mockInvoiceStatuses.set(invoiceId, mockStatus)
+      }
+    }
+
     return {
-      paid: isPaid,
-      status: isPaid ? "PAID" : "PENDING",
-      transactionId: isPaid ? `tx-${Date.now()}` : undefined,
+      paid: mockStatus.paid,
+      status: mockStatus.paid ? 'PAID' : 'PENDING',
+      transactionId: mockStatus.paid ? `tx-mock-${Date.now()}` : undefined,
     }
   }
 

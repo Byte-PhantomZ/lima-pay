@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { generateLightningInvoice, sendMobileMoney } from "@/lib/ejara-api"
-import { getNetworks } from "@/lib/data"
+import { getServerClient } from "@/lib/supabase"
+import type { TransactionStatus } from "@/lib/types"
 
 export async function POST(req: Request) {
   try {
@@ -15,32 +16,39 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Amount is required" }, { status: 400 })
     }
 
-    // Generate unique reference for this transaction
-    const reference = `PAY-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
-
-    // Initiate mobile money payment
-    const momoResult = await sendMobileMoney({
-      phoneNumber: phone, // Match the field name from the form
-      amount: Number(amount),
-      reference,
-    })
-
-    if (!momoResult.success) {
-      return NextResponse.json(
-        { error: momoResult.error || "Failed to initiate mobile money payment" },
-        { status: 400 }
-      )
-    }
+    const supabase = getServerClient()
 
     // Generate Lightning invoice for the payment
     const invoice = await generateLightningInvoice(Number(amount))
 
+    // Create transaction record
+    const { data: transaction, error: insertError } = await supabase
+      .from("transactions")
+      .insert({
+        recipient_phone: phone,
+        network_id: networkId,
+        amount: Number(amount),
+        amount_btc: invoice.amountBtc,
+        invoice_id: invoice.invoiceId,
+        invoice_string: invoice.invoiceString,
+        expires_at: invoice.expiresAt,
+        status: "invoice_generated" as TransactionStatus,
+      })
+      .select()
+      .single()
+
+    if (insertError || !transaction) {
+      console.error("Error creating transaction:", insertError)
+      return NextResponse.json({ error: "Failed to create transaction" }, { status: 500 })
+    }
+
     return NextResponse.json({
       success: true,
+      transactionId: transaction.id,
       invoiceId: invoice.invoiceId,
       invoiceString: invoice.invoiceString,
-      paymentReference: momoResult.paymentReference,
       expiresAt: invoice.expiresAt,
+      isMock: invoice.isMock
     })
   } catch (error) {
     console.error("Error creating invoice:", error)
