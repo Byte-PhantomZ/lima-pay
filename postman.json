@@ -1,0 +1,2634 @@
+{
+	"info": {
+		"_postman_id": "8a69de45-138c-4406-bcd8-dc414b7bb079",
+		"name": "Lighting Pay Rest API Sandbox Original",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9202347"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Partner register",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adzamkomla@gmail.com\",\n    \"password\":\"EjaraTest1*\",\n    \"phoneNumber\":\"65432190\",\n    \"phoneNumberCountryCode\":\"237\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/authentication/partner/register",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authentication",
+								"partner",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Partner register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "client-key",
+										"value": "47489b69a5",
+										"type": "text"
+									},
+									{
+										"key": "client-secret",
+										"value": "d75w1tTAok$w(5rgC8b9Bdeft",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"rafiqueacudjoe@gmail.com\",\n    \"password\":\"Flipmone123***\",\n    \"phoneNumber\":\"544413229\",\n    \"phoneNumberCountryCode\":\"233\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/authentication/partner/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"authentication",
+										"partner",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1243",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4db-yywjTaGJF+G22gUZClyxgTgmpcQ\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 11:02:05 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"authToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoicmFmaXF1ZWFjdWRqb2VAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiI1NDQ0MTMyMjkiLCJwaG9uZU51bWJlckNvdW50cnlDb2RlIjoiMjMzIiwicGFydG5lciI6eyJwYXJ0bmVyUmVmZXJlbmNlSWQiOiJwYXItZWFiOGY5ZDBlN2Q3MWYzNTg1OTEifSwicm9sZSI6eyJuYW1lIjoicGFydG5lciJ9LCJ0b2tlbktleSI6ImVhZjhmZjNjLWUxZmUtNDJhNS1iNDM3LTRhZWFkYzg5ZjdhZCJ9LCJpYXQiOjE3NDQ3MTQ5MjUsImV4cCI6MTc0NDgwMTMyNSwiYXVkIjoibGlnaHRpbmctcGF5IiwiaXNzIjoibGlnaHRpbmctcGF5In0.ZE_tknhT6bAY9OVE4dVOT1evWBNiNzbipq0AFBqRYgI\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoicmFmaXF1ZWFjdWRqb2VAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiI1NDQ0MTMyMjkiLCJwaG9uZU51bWJlckNvdW50cnlDb2RlIjoiMjMzIiwicGFydG5lciI6eyJwYXJ0bmVyUmVmZXJlbmNlSWQiOiJwYXItZWFiOGY5ZDBlN2Q3MWYzNTg1OTEifSwicm9sZSI6eyJuYW1lIjoicGFydG5lciJ9LCJ0b2tlbktleSI6ImFjNjM5MzdmLTcxN2YtNDRkNi04NzA3LTAwZGFmNGE2MjliMiJ9LCJpYXQiOjE3NDQ3MTQ5MjUsImV4cCI6MTc0NDcyMjEyNSwiYXVkIjoibGlnaHRpbmctcGF5IiwiaXNzIjoibGlnaHRpbmctcGF5In0.IS9rIpwo6Qh7bb3TLu4uTW4M04ZMhED9W2NDkXP1ZSw\",\n        \"userDetails\": {\n            \"email\": \"rafiqueacudjoe@gmail.com\",\n            \"phoneNumber\": \"544413229\",\n            \"phoneNumberCountryCode\": \"233\",\n            \"role\": \"partner\",\n            \"applicationReferenceId\": \"app-bded7962e50d011e0c9a\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login partner",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adzamkomla@gmail.com\",\n    \"password\":\"EjaraTest1*\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/authentication/login",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authentication",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login partner",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "client-key",
+										"value": "47489b69a5",
+										"type": "text"
+									},
+									{
+										"key": "client-secret",
+										"value": "d75w1tTAok$w(5rgC8b9Bdeft",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"rafiqueacudjoe@gmail.com\",\n    \"password\":\"Flipmone123***\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/authentication/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"authentication",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2272",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8e0-NUoamGCFTl017P39Q3fXpNLYGSM\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 14:30:57 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"authToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTE0VDE0OjI4OjE3LjU4N1oiLCJjcmVhdGVkQnkiOm51bGwsInVwZGF0ZWRBdCI6IjIwMjUtMDQtMTRUMTQ6Mjg6MTcuNjUzWiIsInVwZGF0ZWRCeSI6bnVsbCwiZW1haWwiOiJyYWZpcXVlYWN1ZGpvZUBnbWFpbC5jb20iLCJwaG9uZU51bWJlciI6IjU0NDQxMzIyOSIsInBob25lTnVtYmVyQ291bnRyeUNvZGUiOiIyMzMiLCJ1c2VybmFtZSI6bnVsbCwiZmlyc3ROYW1lIjpudWxsLCJsYXN0TmFtZSI6bnVsbCwic3RhdHVzIjoidW5jb25maXJtZWQiLCJwcmVmZXJyZWRMYW5ndWFnZSI6bnVsbCwicm9sZUlkIjoxLCJpc0VtYWlsVmVyaWZpZWQiOm51bGwsImlzUGhvbmVWZXJpZmllZCI6bnVsbCwidGVtcG9yYXJ5QWNjZXNzVG9rZW4iOm51bGwsImFjY2Vzc1Rva2VuRXhwaXJlc0F0IjpudWxsLCJsYXN0TG9naW5BdCI6bnVsbCwicGFydG5lcklkIjozLCJ0b2tlbktleSI6ImQ3YWNmMWE0LWMwMTUtNDE5NS04YTRmLTIwNWRiMDc2ZGE0NyJ9LCJpYXQiOjE3NDQ2NDEwNTcsImV4cCI6MTc0NDcyNzQ1NywiYXVkIjoibGlnaHRpbmctcGF5IiwiaXNzIjoibGlnaHRpbmctcGF5In0.jbnOk9W9wVnG6D8Ij0pzrr5Qo5uALF3IO76QdOlPIiM\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTE0VDE0OjI4OjE3LjU4N1oiLCJjcmVhdGVkQnkiOm51bGwsInVwZGF0ZWRBdCI6IjIwMjUtMDQtMTRUMTQ6Mjg6MTcuNjUzWiIsInVwZGF0ZWRCeSI6bnVsbCwiZW1haWwiOiJyYWZpcXVlYWN1ZGpvZUBnbWFpbC5jb20iLCJwaG9uZU51bWJlciI6IjU0NDQxMzIyOSIsInBob25lTnVtYmVyQ291bnRyeUNvZGUiOiIyMzMiLCJ1c2VybmFtZSI6bnVsbCwiZmlyc3ROYW1lIjpudWxsLCJsYXN0TmFtZSI6bnVsbCwic3RhdHVzIjoidW5jb25maXJtZWQiLCJwcmVmZXJyZWRMYW5ndWFnZSI6bnVsbCwicm9sZUlkIjoxLCJpc0VtYWlsVmVyaWZpZWQiOm51bGwsImlzUGhvbmVWZXJpZmllZCI6bnVsbCwidGVtcG9yYXJ5QWNjZXNzVG9rZW4iOm51bGwsImFjY2Vzc1Rva2VuRXhwaXJlc0F0IjpudWxsLCJsYXN0TG9naW5BdCI6bnVsbCwicGFydG5lcklkIjozLCJ0b2tlbktleSI6ImIyMzNiOGI1LTNhOTctNDE5Yy1hODYzLTcwZmFkMDVhNGI4MCJ9LCJpYXQiOjE3NDQ2NDEwNTcsImV4cCI6MTc0NDY0ODI1NywiYXVkIjoibGlnaHRpbmctcGF5IiwiaXNzIjoibGlnaHRpbmctcGF5In0.DklHS1W4N5ZuN7d4-5x8azPZjGNuNnSkQ7GDzhgmZTg\",\n        \"userDetails\": {\n            \"id\": 3,\n            \"createdAt\": \"2025-04-14T14:28:17.587Z\",\n            \"createdBy\": null,\n            \"updatedAt\": \"2025-04-14T14:28:17.653Z\",\n            \"updatedBy\": null,\n            \"email\": \"rafiqueacudjoe@gmail.com\",\n            \"phoneNumber\": \"544413229\",\n            \"phoneNumberCountryCode\": \"233\",\n            \"username\": null,\n            \"firstName\": null,\n            \"lastName\": null,\n            \"status\": \"unconfirmed\",\n            \"preferredLanguage\": null,\n            \"roleId\": 1,\n            \"isEmailVerified\": null,\n            \"isPhoneVerified\": null,\n            \"temporaryAccessToken\": null,\n            \"accessTokenExpiresAt\": null,\n            \"lastLoginAt\": null,\n            \"partnerId\": 3\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Api Key",
+			"item": [
+				{
+					"name": "create api key",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTE1VDExOjA2OjI3LjYzMVoiLCJjcmVhdGVkQnkiOm51bGwsInVwZGF0ZWRBdCI6IjIwMjUtMDQtMTVUMTE6MDY6MjcuNjY1WiIsInVwZGF0ZWRCeSI6bnVsbCwiZW1haWwiOiJyYWZpcXVlYWN1ZGpvZUBnbWFpbC5jb20iLCJwaG9uZU51bWJlciI6IjU0NDQxMzIyOSIsInBob25lTnVtYmVyQ291bnRyeUNvZGUiOiIyMzMiLCJ1c2VybmFtZSI6bnVsbCwiZmlyc3ROYW1lIjpudWxsLCJsYXN0TmFtZSI6bnVsbCwic3RhdHVzIjoidW5jb25maXJtZWQiLCJwcmVmZXJyZWRMYW5ndWFnZSI6bnVsbCwicm9sZUlkIjoxLCJpc0VtYWlsVmVyaWZpZWQiOm51bGwsImlzUGhvbmVWZXJpZmllZCI6bnVsbCwidGVtcG9yYXJ5QWNjZXNzVG9rZW4iOm51bGwsImFjY2Vzc1Rva2VuRXhwaXJlc0F0IjpudWxsLCJsYXN0TG9naW5BdCI6bnVsbCwicGFydG5lcklkIjoxLCJ0b2tlbktleSI6ImNiMjJmNWViLTEwZWMtNDIxZS1iYzUzLWJjYjFlNTg1Nzc4NyJ9LCJpYXQiOjE3NDQ3MTUyMjAsImV4cCI6MTc0NDgwMTYyMCwiYXVkIjoibGlnaHRpbmctcGF5IiwiaXNzIjoibGlnaHRpbmctcGF5In0.ds6sFpVaq4i9cCvdcc5I_rRHsp84TschM3H7bi_TX98",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"applicationReferenceId\":\"app-bae2a6f1866d85ff15e1dd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/api-keys",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"api-keys"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create api key",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "client-key",
+										"value": "47489b69a5",
+										"type": "text"
+									},
+									{
+										"key": "client-secret",
+										"value": "d75w1tTAok$w(5rgC8b9Bdeft",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"applicationReferenceId\":\"app-0a9803cb338d012287d9\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/api-keys",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"api-keys"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "183",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b7-FX5Vj1VJzNT9a3cq7RxS23RIoMw\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 11:10:14 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"apiKey\": \"d497c18e02f4184748bc6213ba41fd18\",\n        \"description\": null,\n        \"status\": \"active\",\n        \"whitelistedIpAddresses\": null,\n        \"createdAt\": \"2025-04-15T11:10:13.982Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve api key",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"host": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/api-keys?applicationReferenceId=",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"api-keys"
+							],
+							"query": [
+								{
+									"key": "applicationReferenceId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "retrieve api key",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/v1/api-keys?applicationReferenceId=app-30af7cc898d9d98a5db3",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"api-keys"
+									],
+									"query": [
+										{
+											"key": "applicationReferenceId",
+											"value": "app-30af7cc898d9d98a5db3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-NEguOW75FkWKunIxHPB+vibOuM4\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 11:18:24 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"createdAt\": \"2025-04-15T11:10:13.982Z\",\n        \"apiKey\": \"d497c18e02f4184748bc6213ba41fd18\",\n        \"lastUsed\": null,\n        \"whitelistedIpAddress\": null,\n        \"description\": null,\n        \"status\": \"active\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "regenerate api key",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"host": true,
+							"content-length": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"applicationReferenceId\":\"app-30af7cc898d9d98a5db3ddd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}api/v1/api-keys/re-generate",
+							"host": [
+								"{{testBoxUrl}}api"
+							],
+							"path": [
+								"v1",
+								"api-keys",
+								"re-generate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "retrieve api key",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/v1/api-keys?applicationReference=app-0a9803cb338d012287d9",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"api-keys"
+									],
+									"query": [
+										{
+											"key": "applicationReference",
+											"value": "app-0a9803cb338d012287d9"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-c4mRz/NABmv6VO6qxplkY/zPBUQ\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 16:52:18 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"createdAt\": \"2025-04-14T16:41:58.059Z\",\n        \"apiKey\": \"1766acd3fc71e89c5d18db7fdd5ba62d\",\n        \"lastUsed\": null,\n        \"whitelistedIpAddress\": null,\n        \"description\": null,\n        \"status\": \"active\"\n    }\n}"
+						},
+						{
+							"name": "regenerate api key",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"applicationReferenceId\":\"app-30af7cc898d9d98a5db3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/api-keys/re-generate",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"api-keys",
+										"re-generate"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "235",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"eb-xjsMk30tR4Si2CSD78Z1Erd/+WU\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 11:26:15 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"apiKey\": \"59db02119922ed5f91e193c432d3f546\",\n        \"description\": null,\n        \"status\": \"active\",\n        \"whitelistedIpAddresses\": null,\n        \"applicationReferenceId\": \"app-30af7cc898d9d98a5db3\",\n        \"createdAt\": \"2025-04-15T11:10:13.982Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "create invoice",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "ee03b82fe43601d3d11045b5f061a9ef",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"satoshiAmount\":1000,\n    \"description\":\"Test invoice\",\n    \"reference\":\"My reference\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/invoices",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"invoices"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create invoice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "1766acd3fc71e89c5d18db7fdd5ba62d",
+										"type": "text"
+									},
+									{
+										"key": "client-key",
+										"value": "6fe7659b89",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "client-secret",
+										"value": "h7TmhiG(w%x(%WCxHylya[!Xb",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"satoshiAmount\":1000,\n    \"description\":\"Test invoice\",\n    \"reference\":\"MyRef\"\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/invoices",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"invoices"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "558",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22e-8ecrAxXb+nc2rBLTkTqVDawUKcE\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 16:59:19 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"partnerReference\": \"MyRef\",\n        \"description\": \"Test invoice\",\n        \"satoshiAmount\": 1000,\n        \"status\": \"pending\",\n        \"invoiceHash\": \"lnbt1000-mocked-099910ed694f1c939e814fd743ba329cabe54aaa713c9261453e782ea4156a887de5fd786038b104430f8dae32b38a9a1883370e6b110199dc460c29aa5c7835ab2842364f40qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq73dc90a7feec22c821d034a916b8dfefb73e863cda1911b356e416db87ab6dd9b485546503f1829b1299e443c836b800afd44c7bf7b1656f6cd299f4927c4099f256b2433719\",\n        \"btcEquivalentOfTokens\": \"0.00001\",\n        \"invoiceReference\": \"inv-be9dae1e776d5decb259\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Application",
+			"item": [
+				{
+					"name": "create application",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTE1VDExOjA2OjI3LjYzMVoiLCJjcmVhdGVkQnkiOm51bGwsInVwZGF0ZWRBdCI6IjIwMjUtMDQtMTVUMTE6MDY6MjcuNjY1WiIsInVwZGF0ZWRCeSI6bnVsbCwiZW1haWwiOiJyYWZpcXVlYWN1ZGpvZUBnbWFpbC5jb20iLCJwaG9uZU51bWJlciI6IjU0NDQxMzIyOSIsInBob25lTnVtYmVyQ291bnRyeUNvZGUiOiIyMzMiLCJ1c2VybmFtZSI6bnVsbCwiZmlyc3ROYW1lIjpudWxsLCJsYXN0TmFtZSI6bnVsbCwic3RhdHVzIjoidW5jb25maXJtZWQiLCJwcmVmZXJyZWRMYW5ndWFnZSI6bnVsbCwicm9sZUlkIjoxLCJpc0VtYWlsVmVyaWZpZWQiOm51bGwsImlzUGhvbmVWZXJpZmllZCI6bnVsbCwidGVtcG9yYXJ5QWNjZXNzVG9rZW4iOm51bGwsImFjY2Vzc1Rva2VuRXhwaXJlc0F0IjpudWxsLCJsYXN0TG9naW5BdCI6bnVsbCwicGFydG5lcklkIjoxLCJ0b2tlbktleSI6ImNiMjJmNWViLTEwZWMtNDIxZS1iYzUzLWJjYjFlNTg1Nzc4NyJ9LCJpYXQiOjE3NDQ3MTUyMjAsImV4cCI6MTc0NDgwMTYyMCwiYXVkIjoibGlnaHRpbmctcGF5IiwiaXNzIjoibGlnaHRpbmctcGF5In0.ds6sFpVaq4i9cCvdcc5I_rRHsp84TschM3H7bi_TX98",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Test app\",\n    \"description\":\"Test invoice\",\n    \"environment\":\"sandbox\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/applications",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create application",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "e724be338a2280792dc334708995f469",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "client-key",
+										"value": "6fe7659b89",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "client-secret",
+										"value": "h7TmhiG(w%x(%WCxHylya[!Xb",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Test app\",\n    \"description\":\"Test invoice\",\n    \"environment\":\"production\"\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/applications",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"applications"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "216",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d8-mJeyWsVKFJRB9TBsN3X49vzGDSo\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 11:54:41 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"name\": \"Test app\",\n        \"description\": \"Test invoice\",\n        \"environment\": \"production\",\n        \"status\": \"active\",\n        \"createdAt\": \"2025-04-15T11:54:41.219Z\",\n        \"applicationReferenceId\": \"app-fd7fb597c41250c99494\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get all applications",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearerToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/applications",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all applications",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{testBoxUrl}}/api/v1/applications",
+									"host": [
+										"{{testBoxUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"applications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 10:21:34 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"11f-Ku2peuYPcSvGQUQ7/N/2V/gpJss\"",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains; preload",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin",
+									"type": "text"
+								},
+								{
+									"key": "Feature-Policy",
+									"value": "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'",
+									"type": "text"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self' http: https: data: blob: 'unsafe-inline'",
+									"type": "text"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "interest-cohort=()",
+									"type": "text"
+								},
+								{
+									"key": "Cf-Cache-Status",
+									"value": "DYNAMIC",
+									"type": "text"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br",
+									"type": "text"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "931b3241fee5ba61-LHR",
+									"type": "text"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"data\": [\n            {\n                \"name\": \"Default App\",\n                \"description\": \"Sandbox application\",\n                \"environment\": \"sandbox\",\n                \"status\": \"active\",\n                \"createdAt\": \"2025-04-16T11:14:43.640Z\",\n                \"applicationReferenceId\": \"app-bae2a6f1866d85ff15e1\"\n            }\n        ],\n        \"meta\": {\n            \"total\": 1,\n            \"page\": 1,\n            \"size\": 10,\n            \"totalPages\": 1\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get application by reference",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"host": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{testBoxUrl}}api/v1/applications/app-30af7cc898d9d98a5db3nn",
+							"host": [
+								"{{testBoxUrl}}api"
+							],
+							"path": [
+								"v1",
+								"applications",
+								"app-30af7cc898d9d98a5db3nn"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get application by reference",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "59db02119922ed5f91e193c432d3f546",
+										"type": "text"
+									},
+									{
+										"key": "client-key",
+										"value": "6fe7659b89",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "client-secret",
+										"value": "h7TmhiG(w%x(%WCxHylya[!Xb",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/v1/applications/app-30af7cc898d9d98a5db3",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"applications",
+										"app-30af7cc898d9d98a5db3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "240",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f0-TZ0UcAN9BM9CxpM5L9Bjb4f0/xQ\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 11:35:35 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"createdAt\": \"2025-04-15T11:06:27.674Z\",\n        \"updatedBy\": null,\n        \"name\": \"Default App\",\n        \"description\": \"Sandbox application\",\n        \"status\": \"active\",\n        \"applicationReferenceId\": \"app-30af7cc898d9d98a5db3\",\n        \"environment\": \"sandbox\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update application",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Updated appication\",\n    \"description\":\"Updated description\",\n    \"environment\":\"sandbox\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/applications/app-30af7cc898d9d98a5db3",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications",
+								"app-30af7cc898d9d98a5db3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update application",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "59db02119922ed5f91e193c432d3f546",
+										"type": "text"
+									},
+									{
+										"key": "client-key",
+										"value": "6fe7659b89",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "client-secret",
+										"value": "h7TmhiG(w%x(%WCxHylya[!Xb",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Updated appication\",\n    \"description\":\"Updated description\",\n    \"environment\":\"production\"\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/applications/app-30af7cc898d9d98a5db3",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"applications",
+										"app-30af7cc898d9d98a5db3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "220",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dc-ta32+LAcMAE6nXtpG5LIO0uDqIc\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 11:39:03 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"name\": \"Updated appication\",\n        \"description\": \"Updated description\",\n        \"environment\": \"production\",\n        \"status\": \"active\",\n        \"createdAt\": \"2025-04-15T11:06:27.674Z\",\n        \"updatedAt\": \"2025-04-15T11:39:03.902Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Subscribe to webhooks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTE1VDExOjA2OjI3LjYzMVoiLCJjcmVhdGVkQnkiOm51bGwsInVwZGF0ZWRBdCI6IjIwMjUtMDQtMTVUMTE6MDY6MjcuNjY1WiIsInVwZGF0ZWRCeSI6bnVsbCwiZW1haWwiOiJyYWZpcXVlYWN1ZGpvZUBnbWFpbC5jb20iLCJwaG9uZU51bWJlciI6IjU0NDQxMzIyOSIsInBob25lTnVtYmVyQ291bnRyeUNvZGUiOiIyMzMiLCJ1c2VybmFtZSI6bnVsbCwiZmlyc3ROYW1lIjpudWxsLCJsYXN0TmFtZSI6bnVsbCwic3RhdHVzIjoidW5jb25maXJtZWQiLCJwcmVmZXJyZWRMYW5ndWFnZSI6bnVsbCwicm9sZUlkIjoxLCJpc0VtYWlsVmVyaWZpZWQiOm51bGwsImlzUGhvbmVWZXJpZmllZCI6bnVsbCwidGVtcG9yYXJ5QWNjZXNzVG9rZW4iOm51bGwsImFjY2Vzc1Rva2VuRXhwaXJlc0F0IjpudWxsLCJsYXN0TG9naW5BdCI6bnVsbCwicGFydG5lcklkIjoxLCJ0b2tlbktleSI6ImNiMjJmNWViLTEwZWMtNDIxZS1iYzUzLWJjYjFlNTg1Nzc4NyJ9LCJpYXQiOjE3NDQ3MTUyMjAsImV4cCI6MTc0NDgwMTYyMCwiYXVkIjoibGlnaHRpbmctcGF5IiwiaXNzIjoibGlnaHRpbmctcGF5In0.ds6sFpVaq4i9cCvdcc5I_rRHsp84TschM3H7bi_TX98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{  \n  \"applicationReferenceId\": \"app-fd7fb597c41250c99494\",\n  \"webhookUrl\": \"https://462f-41-66-227-40.ngrok-free.app/webhook\",\n  \"subscribedEvents\": [\"btc.lightning.received.success\"]\n  }\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/webhook-subscriptions",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"webhook-subscriptions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Subscribe to webhooks",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\n{  \n  \"applicationReferenceId\": \"app-fd7fb597c41250c99494\",\n  \"webhookUrl\": \"https://462f-41-66-227-40.ngrok-free.app/webhook\",\n  \"subscribedEvents\": [\"btc.lightning.received.success\"]\n  }\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/applications/webhooks",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"applications",
+										"webhooks"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "323",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"143-cH+4Y6bNNfcXDc16abgR9z3khkg\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 12:11:03 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Webhook subscription created successfully\",\n    \"data\": {\n        \"applicationRefeneceId\": \"app-fd7fb597c41250c99494\",\n        \"webhookUrl\": \"https://462f-41-66-227-40.ngrok-free.app/webhook\",\n        \"subscribedEvents\": [\n            \"btc.lightning.received.success\"\n        ],\n        \"webhookSecret\": \"ce6067bff26452fdfb39a36240f2efe8\",\n        \"createdAt\": \"2025-04-15T12:11:03.419Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update webhook subscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{  \n  \"applicationReferenceId\": \"app-fd7fb597c41250c99494hh\",\n  \"webhookUrl\": \"https://462f-41-66-227-40.ngrok-free.app/webhook\",\n  \"subscribedEvents\": [\"btc.lightning.invoice.expired\"]\n  }\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/webhook-subscriptions",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"webhook-subscriptions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Subscribe to webhooks",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\n{  \n  \"applicationReferenceId\": \"app-fd7fb597c41250c99494\",\n  \"webhookUrl\": \"https://462f-41-66-227-40.ngrok-free.app/webhook\",\n  \"subscribedEvents\": [\"btc.lightning.received.success\"]\n  }\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/v1/applications/webhooks",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"applications",
+										"webhooks"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "323",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"143-cH+4Y6bNNfcXDc16abgR9z3khkg\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 12:11:03 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Webhook subscription created successfully\",\n    \"data\": {\n        \"applicationRefeneceId\": \"app-fd7fb597c41250c99494\",\n        \"webhookUrl\": \"https://462f-41-66-227-40.ngrok-free.app/webhook\",\n        \"subscribedEvents\": [\n            \"btc.lightning.received.success\"\n        ],\n        \"webhookSecret\": \"ce6067bff26452fdfb39a36240f2efe8\",\n        \"createdAt\": \"2025-04-15T12:11:03.419Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Partner",
+			"item": [
+				{
+					"name": "get balance",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "ee03b82fe43601d3d11045b5f061a9ef",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/partners/balance",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"partners",
+								"balance"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get balance",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "9a9186071675f7918c3b5ce05e7c4302",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/v1/partners/balance",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"partners",
+										"balance"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-oyzmk6U9LP74dzrPFCaXyam6S6s\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 12:44:24 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"balance\": 1000,\n        \"btcEquivalent\": \"0.00001\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get invoices",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "ee03b82fe43601d3d11045b5f061a9ef",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/partners/invoices",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"partners",
+								"invoices"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get invoices",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ee03b82fe43601d3d11045b5f061a9ef",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{testBoxUrl}}/api/v1/partners/invoices",
+									"host": [
+										"{{testBoxUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"partners",
+										"invoices"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 10:22:21 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"2b0-tmTMigcj7LWtlJhVB59pFs415Wc\"",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains; preload",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin",
+									"type": "text"
+								},
+								{
+									"key": "Feature-Policy",
+									"value": "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'",
+									"type": "text"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self' http: https: data: blob: 'unsafe-inline'",
+									"type": "text"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "interest-cohort=()",
+									"type": "text"
+								},
+								{
+									"key": "Cf-Cache-Status",
+									"value": "DYNAMIC",
+									"type": "text"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br",
+									"type": "text"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "931b33683fad9425-LHR",
+									"type": "text"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"data\": [\n            {\n                \"invoiceReferenceId\": \"inv-3a3dd7768fe452226db3\",\n                \"description\": \"Test invoice\",\n                \"invoiceHash\": \"lnbt1000-mocked-c18bc9147b47182b9b8b1fc4efc84046531455bcb964069b98ed1165f4b5782fcffc809e4080d329700fd43636f9d130d056e87b4ca464611539c63c94e60d0f3c80600b0867qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq15f8cca6491494550bfd1e23879dce7a957a74141cf468e379754ec536dc6714264518a4cd68ab53b7ce0405e87b750b1e68998069f09c6c335bf48f7751eb32be070c864902\",\n                \"reference\": \"My reference\",\n                \"expiryDate\": \"2025-04-23T11:54:30.000Z\",\n                \"status\": \"pending\",\n                \"amount\": 1000,\n                \"btcEquivalent\": \"0.00001\",\n                \"createdAt\": \"2025-04-16T11:54:31.160Z\"\n            }\n        ],\n        \"meta\": {\n            \"total\": 1,\n            \"page\": 1,\n            \"size\": 10,\n            \"totalPages\": 1\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get invoices status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{testBoxUrl}}/api/v1/partners/invoices/inv-3a3dd7768fe452226db3",
+							"host": [
+								"{{testBoxUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"partners",
+								"invoices",
+								"inv-3a3dd7768fe452226db3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get invoices",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "9a9186071675f7918c3b5ce05e7c4302",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/v1/partners/invoices",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"partners",
+										"invoices"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "658",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"292-SYCqemfGFybNVNNpoRXMfoqHbtc\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 12:45:55 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful\",\n    \"data\": {\n        \"invoices\": [\n            {\n                \"invoiceReferenceId\": \"inv-4cc7a36540a0bc483b71\",\n                \"description\": \"Test invoice\",\n                \"invoiceHash\": \"lnbt1000-mocked-0426a0b388783ad5b8b4edc713b1a295697909e91945007c134233101e8aa2d4877034fff3df177615852ca49658c4e5ebc31d79b6598b5911343542a9f9f32f434c4ec73e05qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq2312bc13a2bd94da042982c6bc654c5141e483cf46243f60ca3ba8b9a46596a6cb9f94a5521a179b44bbc7ce29c51a265426593843882328498688ae43bfacd0336373193863\",\n                \"reference\": \"My reference\",\n                \"expiryDate\": \"2025-04-22T12:20:40.000Z\",\n                \"status\": \"completed\",\n                \"amount\": 1000,\n                \"btcEquivalent\": \"0.00001\",\n                \"dateCreated\": \"2025-04-15T12:20:43.936Z\"\n            }\n        ],\n        \"totalCount\": 1\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "testBoxUrl",
+			"value": "https://lightningpay-testbox.ejaraapis.xyz",
+			"type": "string"
+		},
+		{
+			"key": "bearerToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

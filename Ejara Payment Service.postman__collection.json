@@ -1,0 +1,595 @@
+{
+	"info": {
+		"_postman_id": "b786b464-55b7-487c-a178-0140074b597a",
+		"name": "Ejara Payment Service",
+		"description": "The payment microservice's API documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9512077"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "accounts",
+							"item": [
+								{
+									"name": "authenticate",
+									"item": [
+										{
+											"name": "Used to authenticate account",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "client-secret",
+														"value": "{{client-secret}}"
+													},
+													{
+														"key": "client-key",
+														"value": "{{client-key}}"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/accounts/authenticate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"accounts",
+														"authenticate"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Successful",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "client-secret",
+																"value": "<string>"
+															},
+															{
+																"key": "client-key",
+																"value": "<string>"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/accounts/authenticate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"accounts",
+																"authenticate"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"message\": \"<string>\",\n  \"data\": {},\n  \"errorCode\": \"<string>\"\n}"
+												},
+												{
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "client-secret",
+																"value": "<string>"
+															},
+															{
+																"key": "client-key",
+																"value": "<string>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/accounts/authenticate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"accounts",
+																"authenticate"
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal server error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "client-secret",
+																"value": "<string>"
+															},
+															{
+																"key": "client-key",
+																"value": "<string>"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/accounts/authenticate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"accounts",
+																"authenticate"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"message\": \"<string>\",\n  \"data\": {},\n  \"errorCode\": \"<string>\"\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "transactions",
+							"item": [
+								{
+									"name": "initiate-momo-payment",
+									"item": [
+										{
+											"name": "Used to initiate account momo transaction",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{accountToken}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "client-secret",
+														"value": "{{client-secret}}"
+													},
+													{
+														"key": "client-key",
+														"value": "{{client-key}}"
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"phoneNumber\": \"<string>\",\n  \"transactionType\": \"payin\", // payin (collection) or payout (disbursement)\n  \"amount\": \"<number>\",\n  \"fullName\": \"<string>\",\n  \"emailAddress\": \"<string>\",\n  \"currencyCode\": \"<string>\", // example: XAF\n  \"countryCode\": \"<string>\", // example: CM\n  \"paymentMode\": \"<string>\", // MOMO (MTN mobile money) or OM (Orange Money)\n  \"externalReference\": \"<string>\", // Your unique transaction reference\n  \"featureCode\": \"<string>\" // example: PRO\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/transactions/initiate-momo-payment",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"transactions",
+														"initiate-momo-payment"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Successful",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "client-secret",
+																"value": "<string>"
+															},
+															{
+																"key": "client-key",
+																"value": "<string>"
+															},
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"phoneNumber\": \"<string>\",\n  \"transactionType\": \"payin\",\n  \"amount\": \"<number>\",\n  \"fullName\": \"<string>\",\n  \"emailAddress\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"paymentMode\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"clientIp\": \"<string>\",\n  \"featureCode\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/transactions/initiate-momo-payment",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"transactions",
+																"initiate-momo-payment"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"message\": \"<string>\",\n  \"data\": {},\n  \"errorCode\": \"<string>\"\n}"
+												},
+												{
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "client-secret",
+																"value": "<string>"
+															},
+															{
+																"key": "client-key",
+																"value": "<string>"
+															},
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"phoneNumber\": \"<string>\",\n  \"transactionType\": \"payin\",\n  \"amount\": \"<number>\",\n  \"fullName\": \"<string>\",\n  \"emailAddress\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"paymentMode\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"clientIp\": \"<string>\",\n  \"featureCode\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/transactions/initiate-momo-payment",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"transactions",
+																"initiate-momo-payment"
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal server error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "client-secret",
+																"value": "<string>"
+															},
+															{
+																"key": "client-key",
+																"value": "<string>"
+															},
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"phoneNumber\": \"<string>\",\n  \"transactionType\": \"payin\",\n  \"amount\": \"<number>\",\n  \"fullName\": \"<string>\",\n  \"emailAddress\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"paymentMode\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"clientIp\": \"<string>\",\n  \"featureCode\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/transactions/initiate-momo-payment",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"transactions",
+																"initiate-momo-payment"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"message\": \"<string>\",\n  \"data\": {},\n  \"errorCode\": \"<string>\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "{paymentReference}",
+									"item": [
+										{
+											"name": "Used to verify account transaction status",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{accountToken}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "client-secret",
+														"value": "{{client-secret}}"
+													},
+													{
+														"key": "client-key",
+														"value": "{{client-key}}"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/transactions/:paymentReference",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"transactions",
+														":paymentReference"
+													],
+													"variable": [
+														{
+															"key": "paymentReference",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Successful",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "client-secret",
+																"value": "<string>"
+															},
+															{
+																"key": "client-key",
+																"value": "<string>"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/transactions/:paymentReference",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"transactions",
+																":paymentReference"
+															],
+															"variable": [
+																{
+																	"key": "paymentReference"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"message\": \"<string>\",\n  \"data\": {},\n  \"errorCode\": \"<string>\"\n}"
+												},
+												{
+													"name": "Internal server error",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "client-secret",
+																"value": "<string>"
+															},
+															{
+																"key": "client-key",
+																"value": "<string>"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/transactions/:paymentReference",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"transactions",
+																":paymentReference"
+															],
+															"variable": [
+																{
+																	"key": "paymentReference"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"message\": \"<string>\",\n  \"data\": {},\n  \"errorCode\": \"<string>\"\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://testbox-valentines-payment.ejaraapis.xyz"
+		}
+	]
+}
