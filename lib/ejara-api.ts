@@ -1,3 +1,5 @@
+import { getServerClient } from "./supabase"
+
 // Ejara API integration
 
 const EJARA_API_BASE_URL = "https://testbox-valentines-payment.ejaraapis.xyz"
@@ -179,34 +181,21 @@ function generateMockInvoice(amountXAF: number): {
 } {
   console.log(`Generating mock invoice for ${amountXAF} XAF`)
 
-  // More realistic BTC conversion rate (approximate as of 2025)
-  // 1 XAF ≈ 0.0000000021 BTC (this would need regular updates in production)
+  const timestamp = Date.now()
+  // Create a deterministic but unique invoice ID that includes creation time
+  const invoiceId = `mock-${timestamp}-${Math.floor(amountXAF)}`
   const amountBtc = amountXAF * 0.0000000021
 
-  // Generate a deterministic but unique invoice ID based on amount and timestamp
-  const timestamp = Date.now()
-  const invoiceId = `mock-${timestamp}-${Math.floor(amountXAF)}`
-
-  // Generate a more realistic looking Lightning invoice string
-  // Format: lnbc[amount][timestring][payment_hash][payment_secret][signature]
-  const mockAmount = Math.floor(amountBtc * 100000000) // Convert to satoshis
+  // Generate a realistic looking Lightning invoice string
+  const mockAmount = Math.floor(amountBtc * 100000000)
   const timeString = Math.floor(timestamp / 1000).toString(16)
   const mockPaymentHash = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('')
   const mockSignature = Array.from({ length: 128 }, () => Math.floor(Math.random() * 16).toString(16)).join('')
-  
   const invoiceString = `lnbc${mockAmount}${timeString}${mockPaymentHash}${mockSignature}`
 
-  // Set expiry to a random time between 8 and 12 minutes from now for more realistic behavior
+  // Set expiry to a random time between 8 and 12 minutes from now
   const expiryMinutes = 8 + Math.floor(Math.random() * 5)
   const expiresAt = new Date(Date.now() + expiryMinutes * 60 * 1000)
-
-  // Store mock payment status for later checking
-  mockInvoiceStatuses.set(invoiceId, {
-    created: timestamp,
-    expiresAt: expiresAt.getTime(),
-    paid: false,
-    amountXAF,
-  })
 
   return {
     invoiceId,
@@ -216,14 +205,6 @@ function generateMockInvoice(amountXAF: number): {
     isMock: true,
   }
 }
-
-// Track mock invoice payment statuses
-const mockInvoiceStatuses = new Map<string, {
-  created: number
-  expiresAt: number
-  paid: boolean
-  amountXAF: number
-}>()
 
 /**
  * Check if a Lightning invoice has been paid
@@ -235,39 +216,37 @@ export async function checkInvoiceStatus(invoiceId: string): Promise<{
 }> {
   // Handle mock invoices with more realistic simulation
   if (invoiceId.startsWith('mock-')) {
-    const mockStatus = mockInvoiceStatuses.get(invoiceId)
-    
-    if (!mockStatus) {
+    // Extract timestamp from invoice ID
+    const match = invoiceId.match(/mock-(\d+)-\d+/)
+    if (!match) {
       return {
         paid: false,
         status: 'INVALID',
       }
     }
 
-    // Check if invoice has expired
-    if (Date.now() > mockStatus.expiresAt) {
+    const creationTime = parseInt(match[1], 10)
+    const ageInSeconds = (Date.now() - creationTime) / 1000
+    const expiryTime = creationTime + (10 * 60 * 1000) // 10 minutes expiry
+
+    // Check if expired
+    if (Date.now() > expiryTime) {
       return {
         paid: false,
         status: 'EXPIRED',
       }
     }
 
-    // If not already paid, simulate payment with increasing probability over time
-    if (!mockStatus.paid) {
-      const ageInSeconds = (Date.now() - mockStatus.created) / 1000
-      const baseChance = Math.min(ageInSeconds / 60, 1) * 0.4 // Max 40% chance after 1 minute
-      const randomFactor = Math.random() * 0.2 // Additional random factor
-      
-      if (Math.random() < (baseChance + randomFactor)) {
-        mockStatus.paid = true
-        mockInvoiceStatuses.set(invoiceId, mockStatus)
-      }
-    }
+    // Simulate payment based on age
+    // 10% base chance + up to 70% based on age (max 80% total chance)
+    const baseChance = 0.1
+    const ageChance = Math.min(ageInSeconds / 60, 1) * 0.7
+    const isPaid = Math.random() < (baseChance + ageChance)
 
     return {
-      paid: mockStatus.paid,
-      status: mockStatus.paid ? 'PAID' : 'PENDING',
-      transactionId: mockStatus.paid ? `tx-mock-${Date.now()}` : undefined,
+      paid: isPaid,
+      status: isPaid ? 'PAID' : 'PENDING',
+      transactionId: isPaid ? `tx-mock-${Date.now()}` : undefined,
     }
   }
 
